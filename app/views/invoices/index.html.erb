@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Invoices</h1>
+
+<div class="row">
+  <div class="col-sm-3">
+    
+  </div>
+
+  <div class="col-sm-2">
+    <%= link_to 'Add a new bill', new_invoice_path, class: 'btn btn-primary' %>
+  </div>
+    
+  <div class="col-sm-2">
+    <%= link_to 'Show Pending Bills', pending_invoices_path, class: 'btn btn-primary' %>
+  </div>
+
+  <div class="col-sm-2">
+    <%= link_to 'Show Collected Bills', collected_invoices_path, class: 'btn btn-primary' %>
+  </div>
+
+  <div class="col-sm-3">
+    
+  </div>
+</div>  
+
+
+<table class="table">
+  <thead class="table-success">
+    <tr>
+      <th>Reference</th>
+      <th>Invoice Date</th>
+      <th>Customer Name</th>
+      <th>Brand Manager</th>
+      <th>Narration</th>
+      <th>Amount</th>
+      <th>Total Collection</th>
+      <th>Balance Due</th>
+      <th>Button to add a collection</th>
+    </tr>
+  </thead>
+
+  <tbody>  
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= link_to invoice.reference, invoice_path(invoice) %></td>
+        <td><%= invoice.invoice_date %></td>
+        <td><%= invoice.customer_name %></td>
+        <td><%= invoice.brand_manager %></td>
+        <td><%= invoice.narration %></td>
+        <td><%= invoice.amount %></td>
+        <td><%= invoice.collected %></td>
+        <td><%= invoice.balance %></td>
+        <td><%= link_to 'Add collection', new_invoice_collection_path(invoice), class: 'btn btn-primary' %></td>
+      </tr></br>
+    <% end %>
+
+  </tbody>
+</table>
+
+
+
+

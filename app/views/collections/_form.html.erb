@@ -1,0 +1,50 @@
+<%= form_with(model: [@invoice, collection], local: true) do |form| %>
+  <% if collection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+      <ul>
+        <% collection.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-1">
+      
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.label :collection_date %>:<br/><br/>
+      <%= form.label :amount %>:
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.date_field :collection_date %><br/><br/>
+      <%= form.number_field :amount %>
+    </div>  
+
+    <div class="col-sm-7">
+      
+    </div>
+  </div></br>
+
+  <div class="row">
+    <div class="col-sm-1">
+      
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.submit %>
+    </div>
+
+    <div class="col-sm-2">
+      <%= link_to 'Back', invoice_path(@invoice), class: 'btn' %>
+    </div>
+    <div class="col-sm-7">
+      
+    </div>
+  </div>  
+<% end %>

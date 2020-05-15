@@ -1,0 +1,59 @@
+<%= form_with(model: invoice, local: true) do |form| %>
+  <% if invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+        <% invoice.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-1">
+      
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.label :reference %>:<br/><br/>
+      <%= form.label :invoice_date %>:<br/><br/>
+      <%= form.label :customer_name %>:<br/><br/>
+      <%= form.label :brand_manager %>:<br/><br/>
+      <%= form.label :narration %>:<br/><br/>
+      <%= form.label :amount %>:
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.text_field :reference %><br/><br/>
+      <%= form.text_field :invoice_date %><br/><br/>
+      <%= form.date_field :customer_name %><br/><br/>
+      <%= form.text_field :brand_manager %><br/><br/>
+      <%= form.text_field :narration %><br/><br/>
+      <%= form.text_field :amount %>
+    </div>
+
+    <div class="col-sm-7">
+      
+    </div>
+  </div></br>  
+
+  <div class="row">
+    <div class="col-sm-1">
+      
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.submit %>
+    </div>
+
+    <div class="col-sm-2">
+      <%= link_to 'Back', invoices_path, class: 'btn btn-light' %>
+    </div>
+    <div class="col-sm-7">
+      
+    </div>
+  </div>
+
+<% end %>
