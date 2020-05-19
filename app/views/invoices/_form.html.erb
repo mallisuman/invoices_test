@@ -31,7 +31,7 @@
       <%= form.date_field :customer_name %><br/><br/>
       <%= form.text_field :brand_manager %><br/><br/>
       <%= form.text_field :narration %><br/><br/>
-      <%= form.text_field :amount %>
+      <%= form.number_field :amount %>
     </div>
 
     <div class="col-sm-7">
@@ -49,7 +49,7 @@
     </div>
 
     <div class="col-sm-2">
-      <%= link_to 'Back', invoices_path, class: 'btn btn-light' %>
+      <%= link_to 'Back', invoices_path, class: 'btn' %>
     </div>
     <div class="col-sm-7">
       

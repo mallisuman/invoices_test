@@ -39,7 +39,7 @@ class CollectionsController < ApplicationController
         end
         format.html { redirect_to [@invoice, @collection], notice: 'Collection was successfully created.' }
         format.json { render :show, status: :created, location: @collection }
-    else
+      else
         format.html { render :new }
         format.json { render json: @collection.errors, status: :unprocessable_entity }
       end
