@@ -3,10 +3,6 @@ class Invoice < ApplicationRecord
 
 
   def balance
-  	if collected < 0
-  	 return amount + collected
-  	end
-  	
   	amount - collected
   end
 
