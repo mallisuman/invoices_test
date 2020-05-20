@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.page(params[:page] || 1)
   end
 
   # GET /invoices/1
@@ -23,12 +23,12 @@ class InvoicesController < ApplicationController
   end
 
   def pending
-    @invoices = Invoice.where(status: "pending")
+    @invoices = Invoice.where(status: "pending").page(params[:page] || 1)
     render :index
   end
 
   def collected
-    @invoices = Invoice.where(status: "collected")
+    @invoices = Invoice.where(status: "collected").page(params[:page] || 1)
     render :index
   end
 

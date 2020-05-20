@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
   # GET /collections.json
   def index
     @invoice = Invoice.find(params[:invoice_id])
-    @collections = Collection.all
+    @collections = Collection.page(params[:page] || 1)
   end
 
   # GET /collections/1
@@ -33,10 +33,6 @@ class CollectionsController < ApplicationController
     
     respond_to do |format|
       if @collection.save
-        if @invoice.balance <= 0
-          @invoice.status = "collected"
-          @invoice.save!
-        end
         format.html { redirect_to [@invoice, @collection], notice: 'Collection was successfully created.' }
         format.json { render :show, status: :created, location: @collection }
       else
